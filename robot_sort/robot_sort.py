@@ -114,12 +114,15 @@ class SortingRobot:
             while self.can_move_right(): # traverse the loop
                 self.swap_item() # pick up item
                 self.move_right(); # move to the right to compare
-                if self.compare_item() == 1: # 
-                    self.set_light_on()
+                if self.compare_item() == 1: # confirm held item with item at current position
+                    # swap item and turn lights on
+                    self.set_light_on() 
                     self.swap_item()
-                self.move_left()
+                # move back, drop item and move right for next iteration
+                self.move_left() 
                 self.swap_item()
                 self.move_right()
+            # stop the loop when there are no swaps
             if self.light_is_on() == False:
                 break
         
